@@ -1,0 +1,1 @@
+<img src="{{ asset('storage/'.$foto->image) }}" alt="Surat" class="img-fluid">
