@@ -19,7 +19,7 @@ class TransaksiSuratKeluarController extends Controller
     {
         return view('dashboard.transaksi.surat_keluar.index', [
             'title' =>  'Transaksi surat keluar',
-            'surats'  =>  SuratKeluar::with('suratKeterangan', 'suratpermohonan')->latest()->get(),
+            'surats'  =>  SuratKeluar::with('suratKeterangan', 'suratpermohonan', 'suratpemberitahuan')->latest()->get(),
         ]);
     }
 
@@ -41,7 +41,6 @@ class TransaksiSuratKeluarController extends Controller
      * Store a newly created resource in storage.
      */
 
-    // Store Keterangan
     public function store(Request $request)
     {
         $dataSuratKeluar = $request->validate([
@@ -56,6 +55,12 @@ class TransaksiSuratKeluarController extends Controller
             'perihal_surat' => 'required',
             'lampiran' => 'required',
         ]);
+
+        // Memeriksa apakah nomor surat sudah ada dalam database
+        if (SuratKeluar::where('nomor_surat', $dataSuratKeluar['nomor_surat'])->exists()) {
+            return redirect('/transaksi/surat-keluar/create')
+                ->with('error', $dataSuratKeluar['nomor_surat'] . ' Nomor surat sudah tersedia di database');
+        }
 
         $suratKeluar = SuratKeluar::create($dataSuratKeluar);
 
@@ -79,8 +84,10 @@ class TransaksiSuratKeluarController extends Controller
             ]);
             $dosen = $suratKeluar->dosen()->create($dataDosen);
         } else {
-            abort(404, 'Not Found');
+            // abort(404, 'Not Found');
         }
+
+
 
         // Jika jenis surat yang di pilih
 
@@ -95,6 +102,17 @@ class TransaksiSuratKeluarController extends Controller
                 'body_surat' => ''
             ]);
             $suratPermohonan = $suratKeluar->suratPermohonan()->create($dataPermohonan);
+        } else if ($dataSuratKeluar['jenis_surat'] == "Surat Pemberitahuan") {
+            $dataPemberitahuan = $request->validate([
+                'nama' => 'required',
+                'hari_tanggal' => '',
+                'pukul' => '',
+                'tempat' => '',
+                'acara' => '',
+                'peserta' => '',
+                'body_surat' => ''
+            ]);
+            $suratPemberitahuan = $suratKeluar->suratPemberitahuan()->create($dataPemberitahuan);
         } else {
             abort(404, 'Not Found');
         }
@@ -125,6 +143,13 @@ class TransaksiSuratKeluarController extends Controller
         } else if ($jenis == 'Surat Permohonan') {
             $jenis = 'surat_permohonan';
             $data = SuratKeluar::with('suratpermohonan')->where('slug', $slug)->first();
+            return view("dashboard.transaksi.surat_keluar.view.$jenis.edit", [
+                'title' => 'Edit surat keluar',
+                'surat' => $data
+            ]);
+        } else if ($jenis == 'Surat Pemberitahuan') {
+            $jenis = 'surat_pemberitahuan';
+            $data = SuratKeluar::with('suratpemberitahuan')->where('slug', $slug)->first();
             return view("dashboard.transaksi.surat_keluar.view.$jenis.edit", [
                 'title' => 'Edit surat keluar',
                 'surat' => $data
@@ -190,6 +215,17 @@ class TransaksiSuratKeluarController extends Controller
                 'body_surat' => ''
             ]);
             $suratKeluar->suratPermohonan->update($dataUpdateSurat);
+        } else if ($validateData['jenis_surat'] === 'Surat Pemberitahuan') {
+            $dataUpdateSurat = $request->validate([
+                'nama' => 'required',
+                'hari_tanggal' => '',
+                'pukul' => '',
+                'tempat' => '',
+                'acara' => '',
+                'peserta' => '',
+                'body_surat' => ''
+            ]);
+            $suratKeluar->suratPemberitahuan->update($dataUpdateSurat);
         } else {
             abort(404, 'Not Found');
         }

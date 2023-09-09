@@ -29,6 +29,7 @@
                 <td class="py-3 px-4">No</td>
                 <td class="py-3 px-4">NAMA</td>
                 <td class="py-3 px-4">EMAIL</td>
+                <td class="py-3 px-4">NIP</td>
                 <td class="py-3 px-4">LEVEL</td>
                 <td class="py-3 px-4 text-center">AKSI</td>
             </tr>
@@ -40,6 +41,7 @@
                 <td class="py-2 px-4 fw-bold">{{ $loop->iteration }}</td>
                 <td class="py-2 px-4">{{ $data->name }}</td>
                 <td class="py-2 px-4">{{ $data->email }}</td>
+                <td class="py-2 px-4">{{ $data->nip }}</td>
                 <td class="py-2 px-4">
                     @if($data->level == 'is_admin')
                     Admin

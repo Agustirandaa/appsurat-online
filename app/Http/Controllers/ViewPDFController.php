@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SuratKeluar;
 use App\Models\SuratMasuk;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ViewPDFController extends Controller
@@ -16,6 +17,8 @@ class ViewPDFController extends Controller
             $jenis = 'surat_keterangan';
         } else if ($jenis == 'Surat Permohonan') {
             $jenis = 'surat_permohonan';
+        } else if ($jenis == 'Surat Pemberitahuan') {
+            $jenis = 'surat_pemberitahuan';
         } else {
             abort(404, 'Not Found');
         }
@@ -27,7 +30,7 @@ class ViewPDFController extends Controller
         } else if ($status === 'Dosen') {
             $dataDetail = $data->dosen;
         } else {
-            abort(404, 'Not Found');
+            $dataDetail = $data->suratPemberitahuan;
         }
 
         return view("dashboard.Pdf_template.$jenis.view_pdf", [
@@ -60,7 +63,11 @@ class ViewPDFController extends Controller
         $querySuratKeterangan = clone $query;
         $jumlahSuratKeterangan = $querySuratKeterangan->where('jenis_surat', 'Surat Keterangan')->count();
 
+        $querySuratPemberitahuan = clone $query;
+        $jumlahSuratPemberitahuan = $querySuratPemberitahuan->where('jenis_surat', 'Surat Pemberitahuan')->count();
+
         return view("dashboard.Pdf_template.laporansuratmasuk", [
+            'user' => User::where('level', 'is_user')->first(),
             'startdate' => $startDate,
             'enddate' => $endDate,
             'semester' => $semester,
@@ -68,6 +75,7 @@ class ViewPDFController extends Controller
             'totalSurat' => $totalSurat,
             'jumlahSuratPermohonan' => $jumlahSuratPermohonan,
             'jumlahSuratKeterangan' => $jumlahSuratKeterangan,
+            'jumlahSuratPemberitahuan' => $jumlahSuratPemberitahuan,
         ]);
     }
 
@@ -91,7 +99,7 @@ class ViewPDFController extends Controller
 
         $totalSurat = $query->count();
 
-        // Query harus diklom, jika tidak akan tertimpa dan tidak akan muncul jumlah surat nya
+        // Query harus diklon, jika tidak akan tertimpa dan tidak akan muncul jumlah surat nya
 
         $querySuratPermohonan = clone $query;
         $jumlahSuratPermohonan = $querySuratPermohonan->where('jenis_surat', 'Surat Permohonan')->count();
@@ -99,7 +107,11 @@ class ViewPDFController extends Controller
         $querySuratKeterangan = clone $query;
         $jumlahSuratKeterangan = $querySuratKeterangan->where('jenis_surat', 'Surat Keterangan')->count();
 
+        $querySuratPemberitahuan = clone $query;
+        $jumlahSuratPemberitahuan = $querySuratPemberitahuan->where('jenis_surat', 'Surat Pemberitahuan')->count();
+
         return view("dashboard.Pdf_template.laporansuratkeluar", [
+            'user' => User::where('level', 'is_user')->first(),
             'startdate' => $startDate,
             'enddate' => $endDate,
             'semester' => $semester,
@@ -107,6 +119,7 @@ class ViewPDFController extends Controller
             'totalSurat' => $totalSurat,
             'jumlahSuratPermohonan' => $jumlahSuratPermohonan,
             'jumlahSuratKeterangan' => $jumlahSuratKeterangan,
+            'jumlahSuratPemberitahuan' => $jumlahSuratPemberitahuan,
         ]);
     }
 }

@@ -137,7 +137,7 @@
                     </div>
                     
                     <div class="row mb-4">       
-                        <input type="hidden" name="slug" class="form-control" id="slug" aria-describedby="slug" readonly>
+                        <input type="text" name="slug" class="form-control" id="slug" aria-describedby="slug" readonly>
                         <div class="col form-group mb-3 d-flex justify-content-start">
                             <a href="/transaksi/surat-keluar" role="button" class="btn btn-light fw-bolder d-flex align-items-center">
                                 <i class='bx bx-left-arrow-alt me-1 fs-5'></i> Kembali 

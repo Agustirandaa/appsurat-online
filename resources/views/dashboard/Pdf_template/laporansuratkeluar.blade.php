@@ -31,9 +31,9 @@
             <td style="width: 50.1187%; text-align: center;">{{ $jumlahSuratPermohonan }}</td>
         </tr>
         <tr>
-            <td style="width: 12.2378%; text-align: center;"><br></td>
-            <td style="width: 37.5138%; text-align: center;"><br></td>
-            <td style="width: 50.1187%; text-align: center;"><br></td>
+            <td style="width: 12.2378%; text-align: center;">3</td>
+            <td style="width: 37.5138%; text-align: left;">Surat Pemberitahuan</td>
+            <td style="width: 50.1187%; text-align: center;">{{ $jumlahSuratPemberitahuan }}</td>
         </tr>
         <tr>
             <td style="width: 49.7046%; text-align: center;" colspan="2" class="fw-bold">Total</td>
@@ -63,5 +63,22 @@
         </tr>
     </tbody>
 </table>
-
+<div class="body-ttd mt-4">
+    <div class="row">
+        <div class="col-5 offset-7 p-3">
+            <p>Mengetahui,</p>
+            <p>Ketua Prodi Teknologi Informasi</p>
+            
+            <div class="visible-print mb-3">
+                {!! QrCode::size(60)->generate(Request::url()); !!}
+            </div>
+            <p>{{ $user->name }}</p>         
+            
+        </div>
+    </div>
+</div>
+<p>* Dokumen ini tidak memerlukan tanda tangan karna dicetak secara komputerisasi</p>
+<div class="fixed-bottom d-flex justify-content-end">
+    <img src="/img/blu.png" width="60" alt="Logo blue speed">
+</div>
 @endsection

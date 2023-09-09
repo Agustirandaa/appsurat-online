@@ -2,7 +2,7 @@
     <div class="side-bar">
         <div class="header-sidebar">
             <div class="header-img me-3">
-                <img src="/img/ti.png" width="70" alt="Teknologi infromasi">
+                <img src="/img/logouin.png" width="50" alt="Teknologi infromasi">
             </div>
             <div class="header-title">
                 <span>E - Surat</span>

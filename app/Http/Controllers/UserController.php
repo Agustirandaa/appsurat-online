@@ -87,7 +87,8 @@ class UserController extends Controller
     public function update(Request $request, User $user, $id)
     {
         $validateData = $request->validate([
-            'level' => 'required'
+            'level' => 'required',
+            'nip' => ''
         ]);
 
         User::where('id', $id)

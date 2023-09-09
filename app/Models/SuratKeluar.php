@@ -52,7 +52,11 @@ class SuratKeluar extends Model
         return $this->hasOne(SuratPermohonan::class);
     }
 
-
+    // Relasi ke surat Pemberitahuan
+    public function suratPemberitahuan()
+    {
+        return $this->hasOne(SuratPemberitahuan::class);
+    }
 
 
     // Ganti yang biasa dikirim parameter ID ke SLUG

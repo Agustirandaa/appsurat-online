@@ -28,7 +28,9 @@
             line-height: 10px;
         }
         
-        .title-surat, .body-name{
+        .title-surat,
+        .body-name, 
+        .content{
             font-family: 'Times New Roman', Times, serif;
         }
         
@@ -39,6 +41,7 @@
         .body-ttd p{
             line-height: 0;
         }
+        
         
         @media print{
             body{
@@ -78,7 +81,9 @@
         <hr class="border border-dark border opacity-100" style="margin-top: -14px;">
         
         
-        @yield('body')
+        <div class="content">
+            @yield('body')
+        </div>
         
         
     </div>

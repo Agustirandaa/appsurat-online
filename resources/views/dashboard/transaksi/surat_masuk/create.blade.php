@@ -68,7 +68,7 @@
                                 <option selected disabled value="">Select</option>
                                 <option value="Surat Keterangan">Surat Keterangan</option>
                                 <option value="Surat Permohonan">Surat Permohonan</option>
-                                <option value="Surat Keputusan">Surat Keputusan</option>
+                                <option value="Surat Pemberitahuan">Surat Pemberitahuan</option>
                             </select> 
                         </div>
                         

@@ -82,7 +82,7 @@
                 <div class="visible-print mb-3">
                     {!! QrCode::size(80)->generate(Request::url()); !!}
                 </div>
-                <p>Ima Dwitawati</p>
+                <p>{{ $surat->name_check }}</p>
                 @else   
                 <p>Surat belum di setujui</p>
                 @endif             

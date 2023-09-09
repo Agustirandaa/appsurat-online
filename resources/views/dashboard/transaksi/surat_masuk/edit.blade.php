@@ -68,7 +68,7 @@
                                     <option disabled value="">Select sifat surat</option>
                                     <option value="Surat Keterangan" @if($surat->jenis_surat === 'Surat Keterangan') selected @endif>Surat Keterangan</option>
                                     <option value="Surat Permohonan" @if($surat->jenis_surat === 'Surat Permohonan') selected @endif>Surat Permohonan</option>
-                                    <option value="Surat Keputusan" @if($surat->jenis_surat === 'Surat Keputusan') selected @endif>Surat Keputusan</option>
+                                    <option value="Surat Pemberitahuan" @if($surat->jenis_surat === 'Surat Pemberitahuan') selected @endif>Surat Pemberitahuan</option>
                                 </select>
                             </div>
                             <div class="col-sm-4 form-group">

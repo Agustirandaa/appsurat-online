@@ -15,7 +15,7 @@ class LaporanSuratKeluarController extends Controller
     {
         return view('dashboard.laporan.surat_keluar.index', [
             'title' =>  'Laporan Surat Keluar',
-            'surats' =>  SuratKeluar::with('suratKeterangan', 'suratpermohonan')->latest()
+            'surats' =>  SuratKeluar::with('suratKeterangan', 'suratpermohonan', 'suratpemberitahuan')->latest()
                 ->filter(request(['jenis_surat', 'semester', 'start_date', 'end_date']))->get(),
         ]);
     }
@@ -65,6 +65,8 @@ class LaporanSuratKeluarController extends Controller
             $jenis = 'surat_keterangan';
         } else if ($jenis == "Surat Permohonan") {
             $jenis = 'surat_permohonan';
+        } else if ($jenis == "Surat Pemberitahuan") {
+            $jenis = 'surat_pemberitahuan';
         } else {
             abort(404, 'Not Found');
         }
@@ -88,7 +90,11 @@ class LaporanSuratKeluarController extends Controller
                 // 'data' => $dataDosen,
             ]);
         } else {
-            abort(404, 'Not Found');
+            return view("dashboard.laporan.surat_keluar.view.$jenis.show", [
+                'title' => 'Detail surat keluar',
+                'surat' => $suratKeluar,
+                // 'data' => $dataDosen,
+            ]);
         }
     }
 }

@@ -25,7 +25,7 @@
                             <label for="name" class="form-label"> Nama</label>
                             <input type="text" name="name" class="form-control mt-2 @error('name')
                             is-invalid
-                            @enderror" autocomplete="off" value="{{ old('name') }}">
+                            @enderror" autocomplete="off" value="{{ old('name') }}" required>
                             @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -36,7 +36,7 @@
                             <label for="username" class="form-label"> Username</label>
                             <input type="text" name="username" class="form-control mt-2 @error('username')
                             is-invalid
-                            @enderror" autocomplete="off" value="{{ old('username') }}">
+                            @enderror" autocomplete="off" value="{{ old('username') }}" required>
                             @error('username')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -49,7 +49,7 @@
                             <label for="email" class="form-label"> Email</label>
                             <input type="email" name="email" class="form-control @error('email')
                             is-invalid
-                            @enderror" autocomplete="off" value="{{ old('email') }}">
+                            @enderror" autocomplete="off" value="{{ old('email') }}" required>
                             @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -60,7 +60,7 @@
                             <label for="password" class="form-label"> password</label>
                             <input type="text" name="password" class="form-control  @error('password')
                             is-invalid
-                            @enderror" autocomplete="off">
+                            @enderror" autocomplete="off" required>
                             @error('password')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -84,7 +84,7 @@
                         
                         <div class="col-sm-6 form-group">
                             <label for="level"> Level User</label>
-                            <select class="form-select" name="level" aria-label="Select value">
+                            <select class="form-select" name="level" aria-label="Select value" required>
                                 <option selected disabled value="">Select</option>
                                 <option value="is_admin">Admin</option>
                                 <option value="is_user">User</option>

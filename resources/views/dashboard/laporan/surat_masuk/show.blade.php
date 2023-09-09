@@ -23,85 +23,87 @@
 </div>
 <hr>
 
-<div class="row gap-3 ms-1 mb-2 d-flex align-content-center fs">
-    <div class="col-md-3 bg-sky p-3 fw-bold">
-        Pengirim
+<div class="container-fluid">
+    
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Pengirim
+        </div>
+        <div class="col bg-sky p-3">
+            {{ $surat->pengirim }}
+        </div>
     </div>
-    <div class="col-md-8 bg-sky p-3">
-        {{ $surat->pengirim }}
+    
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Sifat Surat
+        </div>
+        <div class="col bg-sky p-3 sifat-surat">
+            {{ $surat->sifat_surat }}
+        </div>
+    </div>
+    
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Perihal Surat
+        </div>
+        <div class="col bg-sky p-3">
+            {{ $surat->perihal_surat }}
+        </div>
+    </div>
+    
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            No Surat
+        </div>
+        <div class="col bg-sky p-3">
+            {{ $surat->nomor_surat }}
+        </div>
+    </div>
+    
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Tanggal Surat
+        </div>
+        <div class="col bg-sky p-3">
+            {{ date('d/m/Y', strtotime($surat->tanggal_surat)) }}
+        </div>
+    </div>
+    
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Tanggal Diterima
+        </div>
+        <div class="col bg-sky p-3">
+            {{ date('d/m/Y', strtotime($surat->tanggal_diterima)) }}
+        </div>
+    </div>
+    
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Semester
+        </div>
+        <div class="col bg-sky p-3">
+            {{ $surat->semester }}
+        </div>
+    </div>
+    
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Status
+        </div>
+        <div class="col bg-sky p-3">
+            {{ $surat->status }}
+        </div>
+    </div>
+    
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Image
+        </div>
+        <div class="col bg-sky p-3">
+            <img src="{{ asset('storage/'. $surat->image) }}" class="img-fluid" alt="...">
+        </div>
     </div>
 </div>
-
-<div class="row gap-3 ms-1 mb-2 d-flex align-content-center fs">
-    <div class="col-md-3 bg-sky p-3 fw-bold">
-        Sifat Surat
-    </div>
-    <div class="col-md-8 bg-sky p-3 sifat-surat">
-        {{ $surat->sifat_surat }}
-    </div>
-</div>
-
-<div class="row gap-3 ms-1 mb-2 d-flex align-content-center fs">
-    <div class="col-md-3 bg-sky p-3 fw-bold">
-        Perihal Surat
-    </div>
-    <div class="col-md-8 bg-sky p-3">
-        {{ $surat->perihal_surat }}
-    </div>
-</div>
-
-<div class="row gap-3 ms-1 mb-2 d-flex align-content-center fs">
-    <div class="col-md-3 bg-sky p-3 fw-bold">
-        No Surat
-    </div>
-    <div class="col-md-8 bg-sky p-3">
-        {{ $surat->nomor_surat }}
-    </div>
-</div>
-
-<div class="row gap-3 ms-1 mb-2 d-flex align-content-center fs">
-    <div class="col-md-3 bg-sky p-3 fw-bold">
-        Tanggal Surat
-    </div>
-    <div class="col-md-8 bg-sky p-3">
-        {{ date('d/m/Y', strtotime($surat->tanggal_surat)) }}
-    </div>
-</div>
-
-<div class="row gap-3 ms-1 mb-2 d-flex align-content-center fs">
-    <div class="col-md-3 bg-sky p-3 fw-bold">
-        Tanggal Diterima
-    </div>
-    <div class="col-md-8 bg-sky p-3">
-        {{ date('d/m/Y', strtotime($surat->tanggal_diterima)) }}
-    </div>
-</div>
-
-<div class="row gap-3 ms-1 mb-2 d-flex align-content-center fs">
-    <div class="col-md-3 bg-sky p-3 fw-bold">
-        Semester
-    </div>
-    <div class="col-md-8 bg-sky p-3">
-        {{ $surat->semester }}
-    </div>
-</div>
-
-<div class="row gap-3 ms-1 mb-2 d-flex align-content-center fs">
-    <div class="col-md-3 bg-sky p-3 fw-bold">
-        Status
-    </div>
-    <div class="col-md-8 bg-sky p-3">
-        {{ $surat->status }}
-    </div>
-</div>
-
-<div class="row gap-3 ms-1 mb-2 d-flex align-content-center fs">
-    <div class="col-md-3 bg-sky p-3 fw-bold">
-        Image
-    </div>
-    <div class="col-md-8 bg-sky p-3">
-        <img src="{{ asset('storage/'. $surat->image) }}" class="img-fluid" alt="...">
-    </div>
-</div>
-
 @endsection

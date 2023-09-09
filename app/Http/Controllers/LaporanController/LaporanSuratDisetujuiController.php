@@ -15,7 +15,7 @@ class LaporanSuratDisetujuiController extends Controller
     {
         return view('dashboard.laporan.surat_disetujui.index', [
             'title' =>  'Laporan Surat Disetujui',
-            'suratdisetujui'    =>  SuratKeluar::with('suratKeterangan', 'suratpermohonan')->latest()->get(),
+            'suratdisetujui'    =>  SuratKeluar::with('suratKeterangan', 'suratpermohonan', 'suratpemberitahuan')->latest()->get(),
         ]);
     }
 }

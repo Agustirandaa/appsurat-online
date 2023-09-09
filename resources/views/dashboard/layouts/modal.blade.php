@@ -176,6 +176,7 @@
                                 <option selected value="">Select</option>
                                 <option value="Surat Permohonan"{{ request('jenis_surat') === 'Surat Permohonan' ? ' selected' : '' }}>Surat Permohonan</option>
                                 <option value="Surat Keterangan"{{ request('jenis_surat') === 'Surat Keterangan' ? ' selected' : '' }}>Surat Keterangan</option>
+                                <option value="Surat Pemberitahuan"{{ request('jenis_surat') === 'Surat Pemberitahuan' ? ' selected' : '' }}>Surat Pemberitahuan</option>
                                 
                             </select> 
                         </div>    

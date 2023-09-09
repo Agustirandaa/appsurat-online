@@ -41,6 +41,18 @@
                     
                     <div class="row mt-4 mb-5">
                         <div class="col-sm-6 form-group mb-2">
+                            <label for="nip" class="form-label"> Nip</label>
+                            <input type="nip" name="nip" class="form-control @error('nip')
+                            is-invalid
+                            @enderror" autocomplete="off" value="{{ old('nip', $user->nip) }}">
+                            @error('nip')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div> 
+                            @enderror     
+                        </div>
+                        
+                        <div class="col-sm-6 form-group mb-2">
                             <label for="level" class="form-label"> Level User</label>
                             <select class="form-select" name="level" aria-label="Select value">
                                 <option selected disabled value="">Select</option>

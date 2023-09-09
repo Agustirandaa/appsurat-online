@@ -126,83 +126,74 @@
     </div>
     
     
-    @if ($surat->status === 'Mahasiswa')
-    
     <div class="row gap-3 mb-2 d-flex align-content-center fs">
         <div class="col-md-3 bg-sky p-3 fw-bold">
-            Nama
+            Nama Surat
         </div>
         <div class="col bg-sky p-3">
-            {{ $surat->mahasiswa->nama }}
+            {{ $surat->suratpemberitahuan->nama }}
         </div>
     </div>
     
+    
+    
+    @if ($surat->suratpemberitahuan->hari_tanggal !== null)
     <div class="row gap-3 mb-2 d-flex align-content-center fs">
         <div class="col-md-3 bg-sky p-3 fw-bold">
-            Nim
+            Hari / Tanggal
         </div>
         <div class="col bg-sky p-3">
-            {{ $surat->mahasiswa->nim }}
+            {{ $surat->suratpemberitahuan->hari_tanggal }}
         </div>
     </div>
-    
-    <div class="row gap-3 mb-2 d-flex align-content-center fs">
-        <div class="col-md-3 bg-sky p-3 fw-bold">
-            Program Studi
-        </div>
-        <div class="col bg-sky p-3">
-            {{ $surat->mahasiswa->program_studi }}
-        </div>
-    </div>
-    
-    @elseif($surat->status === 'Dosen')
-    
-    <div class="row gap-3 mb-2 d-flex align-content-center fs">
-        <div class="col-md-3 bg-sky p-3 fw-bold">
-            Nama
-        </div>
-        <div class="col bg-sky p-3">
-            {{ $surat->dosen->nama }}
-        </div>
-    </div>
-    
-    <div class="row gap-3 mb-2 d-flex align-content-center fs">
-        <div class="col-md-3 bg-sky p-3 fw-bold">
-            Nip
-        </div>
-        <div class="col bg-sky p-3">
-            {{ $surat->dosen->nip }}
-        </div>
-    </div>
-    
-    <div class="row gap-3 mb-2 d-flex align-content-center fs">
-        <div class="col-md-3 bg-sky p-3 fw-bold">
-            Program Studi
-        </div>
-        <div class="col bg-sky p-3">
-            {{ $surat->dosen->program_studi }}
-        </div>
-    </div>
-    
-    <div class="row gap-3 mb-2 d-flex align-content-center fs">
-        <div class="col-md-3 bg-sky p-3 fw-bold">
-            Pangkat / Gol
-        </div>
-        <div class="col bg-sky p-3">
-            {{ $surat->dosen->pangkat_gol }}
-        </div>
-    </div>
-    
-    <div class="row gap-3 mb-2 d-flex align-content-center fs">
-        <div class="col-md-3 bg-sky p-3 fw-bold">
-            Jabatan
-        </div>
-        <div class="col bg-sky p-3">
-            {{ $surat->dosen->jabatan }}
-        </div>
-    </div>
-    
     @endif
+    
+    
+    @if ($surat->suratpemberitahuan->pukul !== null)
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Pukul
+        </div>
+        <div class="col bg-sky p-3">
+            {{ $surat->suratpemberitahuan->pukul }}
+        </div>
+    </div>
+    @endif
+    
+    
+    @if ($surat->suratpemberitahuan->tempat !== null)
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Tempat
+        </div>
+        <div class="col bg-sky p-3">
+            {{ $surat->suratpemberitahuan->tempat }}
+        </div>
+    </div>
+    @endif
+    
+    @if ($surat->suratpemberitahuan->acara !== null)
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Acara
+        </div>
+        <div class="col bg-sky p-3">
+            {{ $surat->suratpemberitahuan->acara }}
+        </div>
+    </div>
+    @endif
+    
+    @if ($surat->suratpemberitahuan->peserta !== null)
+    <div class="row gap-3 mb-2 d-flex align-content-center fs">
+        <div class="col-md-3 bg-sky p-3 fw-bold">
+            Peserta
+        </div>
+        <div class="col bg-sky p-3">
+            {{ $surat->suratpemberitahuan->peserta }}
+        </div>
+    </div>
+    @endif
+    
     
     <div class="row gap-3 mb-5 d-flex align-content-center fs">
         <div class="col-md-3 bg-sky p-3 fw-bold">
